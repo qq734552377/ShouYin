@@ -1,9 +1,12 @@
 package com.ucast.shouyin.tools;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -121,5 +124,16 @@ public class MyTools {
         System.arraycopy(res,0,dest,0,res.length);
         dest[dest.length - 1] = jiaoYan;
         return dest;
+    }
+    /**
+     * 隐藏输入软键盘
+     * @param context
+     * @param view
+     */
+    public static void hideInputManager(Context context,View view){
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (view !=null && imm != null){
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);  //强制隐藏
+        }
     }
 }

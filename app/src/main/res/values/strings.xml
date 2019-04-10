@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">shouyin</string>
+    <string name="base">收银台：001 收银员：王小姐</string>
+    <string name="search_hint">搜索手机号或者卡号</string>
+    <string name="search">搜索</string>
+    <string name="empty"></string>
 </resources>

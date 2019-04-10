@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.base.EmployeActivity">
+
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="100px"
+        android:background="@color/colorPrimary"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                >
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:paddingTop="20px"
+                  >
+                  <ImageView
+                      android:layout_width="50px"
+                      android:layout_height="match_parent" />
+                  <ImageView
+                      android:id="@+id/employe_icon"
+                      android:layout_width="64px"
+                      android:layout_height="64px"
+                      />
+
+              </LinearLayout>
+                <ImageView
+                    android:layout_width="20px"
+                    android:layout_height="match_parent" />
+                <LinearLayout
+                    android:layout_width="300px"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="36px"
+                    >
+                    <TextView
+                        android:id="@+id/employe_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="姓名：周寒青"
+                        style="@style/title_text"
+                        />
+                    <TextView
+                        android:id="@+id/employe_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="电话：18112997453"
+                        style="@style/title_text"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="200px"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:paddingTop="20px"
+                >
+                <ImageView
+                    android:id="@+id/history_orders"
+                    android:layout_width="90px"
+                    android:layout_height="50px"
+                    android:src="@drawable/history"
+                    android:scaleType="fitXY"
+                    />
+                <ImageView
+                    android:layout_width="20px"
+                    android:layout_height="match_parent" />
+                <ImageView
+                    android:id="@+id/vip_info"
+                    android:layout_width="90px"
+                    android:layout_height="50px"
+                    android:src="@drawable/vip"
+                    android:scaleType="fitXY"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <include layout="@layout/item_select_payway"/>
+</LinearLayout>

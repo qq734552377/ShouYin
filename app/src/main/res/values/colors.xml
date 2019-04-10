@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#888888</color>
-    <color name="colorPrimaryDark">#888888</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#999999</color>
+    <color name="colorPrimaryDark">#555555</color>
+    <color name="colorAccent">@color/colorPrimary</color>
+    <color name="white">#FFFFFF</color>
+    <color name="numkeyBackground">#eeeeee</color>
+    <color name="numkeyTextColor">#000000</color>
+    <color name="black">#000000</color>
+    <color name="orderVipNumberColor">#999999</color>
+    <color name="orderMoneyColor">#12A0FF</color>
+    <color name="divideLineColor">#999999</color>
+    <color name="loginBtColor">#0099FF</color>
+    <color name="loginBtPressedColor">#0088EE</color>
+    <color name="vipShowMsgColor">#333333</color>
 </resources>
