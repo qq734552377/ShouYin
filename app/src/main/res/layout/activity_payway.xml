@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.other.PaywayActivity">
+
+    <com.ucast.shouyin.num_view.MyTitleView
+        android:id="@+id/mytitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+    </com.ucast.shouyin.num_view.MyTitleView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/mypaywayview"
+        app:layout_constraintTop_toBottomOf="@id/mytitle"
+        android:orientation="vertical"
+        android:padding="15dp"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="请输入金额"
+                style="@style/common_textsize"
+                />
+
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:id="@+id/show_old_money_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/common_textsize"
+                android:text="￥100.00"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            >
+            <TextView
+                android:id="@+id/money"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                style="@style/show_money_text_style"
+                android:text="￥100.00"
+                />
+            <LinearLayout
+                android:layout_width="130dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                >
+                <RadioGroup
+                    android:id="@+id/select_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/all_discount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="整单折扣"
+                        android:textColor="@color/paywayTextColor"
+                        style="@style/common_textsize"
+                        />
+                    <RadioButton
+                        android:id="@+id/remark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="备注"
+                        style="@style/common_textsize"
+                        android:textColor="@color/paywayTextColor"
+                        />
+                </RadioGroup>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            >
+            <TextView
+                style="@style/one_line_two_textview_style"
+                android:text="已付"
+                />
+            <TextView
+                android:id="@+id/payed_money"
+                style="@style/one_line_two_textview_style"
+                android:text="￥0.00"
+                android:layout_weight="4"
+                android:gravity="right"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            >
+            <TextView
+                style="@style/one_line_two_textview_style"
+                android:text="待付"
+                />
+            <TextView
+                android:id="@+id/will_pay_money"
+                style="@style/one_line_two_textview_style"
+                android:text="￥0.00"
+                android:layout_weight="4"
+                android:gravity="right"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            >
+            <RadioButton
+                android:id="@+id/remark2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="备注"
+                style="@style/common_textsize"
+                android:textColor="@color/paywayTextColor"
+                />
+
+        </LinearLayout>
+        
+        
+
+    </LinearLayout>
+
+
+    <com.ucast.shouyin.num_view.MyPayWayView
+        android:id="@+id/mypaywayview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        ></com.ucast.shouyin.num_view.MyPayWayView>
+
+</android.support.constraint.ConstraintLayout>

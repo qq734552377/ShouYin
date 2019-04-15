@@ -19,23 +19,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".activities.base.EmployeActivity">
-
-
-        </activity>
-        <activity android:name=".activities.base.TitleWithSearchActivity"
-                  android:windowSoftInputMode="adjustResize|stateHidden"
-            >
-
+        <activity android:name=".activities.other.PaywayResultActivity"></activity>
+        <activity android:name=".activities.other.Payway2Activity" />
+        <activity android:name=".activities.other.PaywayActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.base.EmployeActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".activities.base.TitleWithSearchActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
     </application>
 
 </manifest>

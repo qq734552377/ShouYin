@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.other.Payway2Activity">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="@drawable/left"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+            <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:singleLine="true"
+            style="@style/title_text"
+            />
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/mynumberview"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:orientation="vertical"
+        android:padding="15dp"
+
+        >
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            >
+            <TextView
+                style="@style/one_line_two_textview_style"
+                android:text="已付"
+                android:gravity="right"
+                />
+            <TextView
+                android:id="@+id/payed_money"
+                style="@style/one_line_two_textview_style"
+                android:layout_width="wrap_content"
+                android:layout_weight="0"
+                android:layout_marginLeft="15dp"
+                android:text="￥0.00"
+                android:gravity="right"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            >
+            <TextView
+                style="@style/one_line_two_textview_style"
+                android:text="待付"
+                android:gravity="right"
+                />
+            <TextView
+                android:id="@+id/will_pay_money"
+                style="@style/one_line_two_textview_style"
+                android:layout_width="wrap_content"
+                android:layout_weight="0"
+                android:layout_marginLeft="15dp"
+                android:text="￥100.00"
+                android:gravity="right"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="32dp"
+            >
+            <TextView
+                android:id="@+id/pay_type_tv"
+                style="@style/one_line_two_textview_style"
+                android:text="扫码支付"
+                />
+            <TextView
+                android:id="@+id/pay_money_number"
+                style="@style/one_line_two_textview_style"
+                android:text="￥100.00"
+                android:gravity="right"
+                android:textColor="@color/colorPrimary"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.ucast.shouyin.num_view.NumberView
+        android:id="@+id/mynumberview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.ucast.shouyin.num_view.NumberView>
+
+</android.support.constraint.ConstraintLayout>

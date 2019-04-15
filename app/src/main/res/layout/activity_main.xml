@@ -6,24 +6,109 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/toolbar"
+    <!--<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:id="@+id/toolbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:minHeight="?attr/actionBarSize"-->
+    <!--android:background="@color/colorPrimary"-->
+    <!--app:navigationIcon="@drawable/menu"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--&gt;-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/toolbar_title"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:singleLine="true"-->
+    <!--style="@style/title_text"-->
+    <!--/>-->
+    <!--</android.support.v7.widget.Toolbar>-->
+
+    <com.ucast.shouyin.num_view.MyTitleView
+        android:id="@+id/mytitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        app:navigationIcon="@drawable/menu"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.ucast.shouyin.num_view.MyTitleView>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@id/mynumberview"
+        app:layout_constraintTop_toBottomOf="@id/mytitle"
+        android:padding="15dp"
         >
 
         <TextView
-            android:id="@+id/toolbar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:singleLine="true"
-            style="@style/title_text"
+            android:text="请输入金额"
+            style="@style/common_textsize"
             />
-    </android.support.v7.widget.Toolbar>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp"
+            >
+            <EditText
+                android:id="@+id/money"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_edittext_background"
+                style="@style/show_money_text_style"
+                android:hint="￥0.00"
+                android:maxLines="4"
+                />
+            <LinearLayout
+                android:layout_width="130dp"
+                android:orientation="vertical"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                >
+                <RadioGroup
+                    android:id="@+id/select_radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <RadioButton
+                        android:id="@+id/all_discount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="整单折扣"
+                        style="@style/common_textsize"
+                        android:textColor="@color/paywayTextColor"
+                        />
+                    <RadioButton
+                        android:id="@+id/remark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="备注"
+                        style="@style/common_textsize"
+                        android:textColor="@color/paywayTextColor"
+                        />
+                </RadioGroup>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <com.ucast.shouyin.num_view.NumberView
+        android:id="@+id/mynumberview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </com.ucast.shouyin.num_view.NumberView>
 
 
 </android.support.constraint.ConstraintLayout>

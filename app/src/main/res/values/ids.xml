@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="pay_chuzhika" type="id"/>
+    <item name="pay_saomazhifu" type="id"/>
+    <item name="pay_yinhangka" type="id"/>
+    <item name="pay_huiyuanka" type="id"/>
+    <item name="pay_xianjin" type="id"/>
+
+</resources>

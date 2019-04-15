@@ -2,20 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginTop="50dp"
+    android:orientation="vertical"
+    android:layout_marginTop="0dp"
     >
 
     <LinearLayout
         android:layout_weight="1"
-        android:layout_width="0dp"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="0dp">
         <LinearLayout
             android:id="@+id/chuzhika"
             style="@style/payway_linearlyout_item">
-            <TextView
-                style="@style/payway_circle"
+            <com.ucast.shouyin.num_view.MyCircularImageView
+                style="@style/payway_circle_iv"
+                android:src="@drawable/pay_value_card_background"
                 />
             <TextView
                 style="@style/payway_tv"
@@ -24,10 +25,44 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/saomazhifu"
+            style="@style/payway_linearlyout_item">
+            <com.ucast.shouyin.num_view.MyCircularImageView
+                style="@style/payway_circle_iv"
+                android:src="@drawable/pay_scan_way_background"
+                />
+            <TextView
+                style="@style/payway_tv"
+                android:text="扫码支付"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/yinhanka"
+            style="@style/payway_linearlyout_item">
+            <com.ucast.shouyin.num_view.MyCircularImageView
+                style="@style/payway_circle_iv"
+                android:src="@drawable/pay_bank_card_background"
+                />
+            <TextView
+                style="@style/payway_tv"
+                android:text="银行卡"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:id="@+id/huiyuanka"
             style="@style/payway_linearlyout_item">
-            <TextView
-                style="@style/payway_circle"
+            <com.ucast.shouyin.num_view.MyCircularImageView
+                style="@style/payway_circle_iv"
+                android:src="@drawable/pay_vip_card_background"
                 />
             <TextView
                 style="@style/payway_tv"
@@ -37,32 +72,11 @@
 
         </LinearLayout>
         <LinearLayout
-            style="@style/payway_linearlyout_item">
-
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:id="@+id/saomazhifu"
-            style="@style/payway_linearlyout_item">
-            <TextView
-                style="@style/payway_circle"
-                />
-            <TextView
-                style="@style/payway_tv"
-                android:text="扫码支付"
-                />
-
-        </LinearLayout>
-        <LinearLayout
             android:id="@+id/xianjin"
             style="@style/payway_linearlyout_item">
-            <TextView
-                style="@style/payway_circle"
+            <com.ucast.shouyin.num_view.MyCircularImageView
+                style="@style/payway_circle_iv"
+                android:src="@drawable/pay_cash_way_background"
                 />
             <TextView
                 style="@style/payway_tv"
@@ -78,19 +92,12 @@
     </LinearLayout>
     <LinearLayout
         android:layout_weight="1"
-        android:layout_width="0dp"
-        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone"
         android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/yinhanka"
             style="@style/payway_linearlyout_item">
-            <TextView
-                style="@style/payway_circle"
-                />
-            <TextView
-                style="@style/payway_tv"
-                android:text="银行卡"
-                />
 
         </LinearLayout>
         <LinearLayout

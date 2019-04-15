@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape>
-            <solid android:color="#0099FF" />
+            <solid android:color="#fb8158" />
         </shape>
     </item>
     <!--这个是按钮边框设置为四周 并且宽度为1-->
@@ -13,7 +13,7 @@
         android:bottom="1dp">
         <shape>
             <!--这个是背景颜色-->
-            <solid android:color="#EFEFEF" />
+            <solid android:color="#fb8158" />
             <!--这个是按钮中的字体与按钮内的四周边距-->
             <padding android:bottom="10dp"
                 android:left="10dp"

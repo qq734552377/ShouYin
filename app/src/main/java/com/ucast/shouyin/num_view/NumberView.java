@@ -10,8 +10,6 @@ import android.widget.LinearLayout;
 
 import com.ucast.shouyin.R;
 
-import org.xutils.view.annotation.ViewInject;
-
 /**
  * Created by pj on 2019/3/21.
  */
@@ -32,9 +30,14 @@ public class NumberView extends LinearLayout implements View.OnClickListener {
     private Button bt_num_back;
     private Button bt_num_affirm;
     private Button bt_num_empty;
+    private Button bt_vip_do;
+    private Button bt_no_vip_do;
+    private LinearLayout ll_vip_container;
 
     private EditText out_editText;
-    private OnConfirmClickedListener listener;
+    private OnConfirmClickedListener confirmListener;
+    private OnVipClickedListener vipListener;
+    private OnNoVipClickedListener noVipListener;
 
     public NumberView(Context context) {
         super(context);
@@ -56,8 +59,14 @@ public class NumberView extends LinearLayout implements View.OnClickListener {
         this.out_editText = null;
     }
 
-    public void setOnClickedConfirmListener(OnConfirmClickedListener clickedConfirmListener){
-        this.listener = clickedConfirmListener;
+    public void setOnClickedConfirmListener(OnConfirmClickedListener listener){
+        this.confirmListener = listener;
+    }
+    public void setOnClickedVipListener(OnVipClickedListener listener){
+        this.vipListener = listener;
+    }
+    public void setOnClickedNoVipListener(OnNoVipClickedListener listener){
+        this.noVipListener = listener;
     }
 
     private void initViews() {
@@ -76,6 +85,10 @@ public class NumberView extends LinearLayout implements View.OnClickListener {
         bt_num_back = findViewById(R.id.num_back);
         bt_num_affirm = findViewById(R.id.num_affirm);
         bt_num_empty = findViewById(R.id.num_empty);
+        bt_vip_do = findViewById(R.id.bt_vip_do);
+        bt_no_vip_do = findViewById(R.id.bt_no_vip_do);
+
+        ll_vip_container = findViewById(R.id.ll_vip_select);
 
         bt_num_0.setOnClickListener(this);
         bt_num_1.setOnClickListener(this);
@@ -92,12 +105,17 @@ public class NumberView extends LinearLayout implements View.OnClickListener {
         bt_num_back.setOnClickListener(this);
         bt_num_affirm.setOnClickListener(this);
         bt_num_empty.setOnClickListener(this);
+        bt_vip_do.setOnClickListener(this);
+        bt_no_vip_do.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if (out_editText == null)
             return;
+        String text = out_editText.getText().toString();
+        if (text.indexOf("￥") == -1)
+            out_editText.append("￥");
         switch (v.getId()){
             case R.id.num_0:
                 out_editText.append("0");
@@ -136,28 +154,53 @@ public class NumberView extends LinearLayout implements View.OnClickListener {
                 out_editText.setText("");
                 break;
             case R.id.num_back:
-                String text = out_editText.getText().toString();
-                if (text.length() ==0)
+                if (text.length() == 0)
                     return;
                 out_editText.setText(text.substring(0,text.length() - 1));
                 out_editText.setSelection(text.length() - 1);
                 break;
             case R.id.num_affirm:
-                if (listener != null)
-                    listener.onConfirmClicked(this);
+                if (confirmListener != null)
+                    confirmListener.onConfirmClicked(this);
                 break;
             case R.id.num_empty:
-
+                if (text.contains("."))
+                    return;
+                out_editText.append(".");
                 break;
 
+            case R.id.bt_vip_do:
+                if (vipListener != null)
+                    vipListener.onVipClicked(this);
+                break;
+            case R.id.bt_no_vip_do:
+                if (noVipListener != null)
+                    noVipListener.onNoVipClicked(this);
+                break;
             default:
 
                 break;
         }
-    }
 
+
+    }
+    public void setAffirmBtVisibility(boolean isVisibility){
+        if (isVisibility) {
+            bt_num_affirm.setVisibility(VISIBLE);
+            ll_vip_container.setVisibility(GONE);
+        }else {
+            bt_num_affirm.setVisibility(GONE);
+            ll_vip_container.setVisibility(VISIBLE);
+        }
+    }
 
     public interface OnConfirmClickedListener{
         void onConfirmClicked(NumberView view);
+    }
+    public interface OnVipClickedListener{
+        void onVipClicked(NumberView view);
+    }
+    public interface OnNoVipClickedListener{
+        void onNoVipClicked(NumberView view);
     }
 }

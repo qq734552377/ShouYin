@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">shouyin</string>
     <string name="base">收银台：001 收银员：王小姐</string>
+    <string name="scan">扫码支付</string>
     <string name="search_hint">搜索手机号或者卡号</string>
     <string name="search">搜索</string>
     <string name="empty"></string>
+    <string name="pay_type">pay_type</string>
+    <string name="scan_result">scan_result</string>
+    <string name="chuzhika">储值卡</string>
+    <string name="saomazhifu">扫码支付</string>
+    <string name="yinhangka">银行卡</string>
+    <string name="huiyuan">会员</string>
+    <string name="xianjin">现金</string>
 </resources>
