@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.ucast.shouyin.activities.base.EmployeActivity;
 import com.ucast.shouyin.activities.other.PaywayActivity;
+import com.ucast.shouyin.entities.OnePayObject;
+import com.ucast.shouyin.entities.PayObjectSingleInsance;
 import com.ucast.shouyin.num_view.MyTitleView;
 import com.ucast.shouyin.num_view.NumberView;
 import com.ucast.shouyin.tools.MyDialog;
@@ -73,6 +75,24 @@ public class MainActivity extends AppCompatActivity {
         numberView.setOnClickedVipListener(new NumberView.OnVipClickedListener() {
             @Override
             public void onVipClicked(NumberView view) {
+//                OnePayObject onePayObject = new OnePayObject();
+//                onePayObject.setVipPay(true);
+
+
+//                PayObjectSingleInsance.getInstance().setOnePayObject(onePayObject);
+//                Intent i  = new Intent(MainActivity.this, PaywayActivity.class);
+//                startActivity(i);
+            }
+        });
+
+        numberView.setOnClickedNoVipListener(new NumberView.OnNoVipClickedListener() {
+            @Override
+            public void onNoVipClicked(NumberView view) {
+                OnePayObject onePayObject = new OnePayObject();
+                onePayObject.setVipPay(false);
+
+
+                PayObjectSingleInsance.getInstance().setOnePayObject(onePayObject);
                 Intent i  = new Intent(MainActivity.this, PaywayActivity.class);
                 startActivity(i);
             }

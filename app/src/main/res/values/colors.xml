@@ -10,10 +10,13 @@
     <color name="paywayTextColor">#999999</color>
     <color name="paywayTextPressColor">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="paresult_left_show_msg_tv_color">#333333</color>
     <color name="orderVipNumberColor">#999999</color>
     <color name="orderMoneyColor">#12A0FF</color>
     <color name="divideLineColor">#999999</color>
     <color name="loginBtColor">#0099FF</color>
     <color name="loginBtPressedColor">#0088EE</color>
+    <color name="returnFirstPageBtColor">@color/colorPrimary</color>
+    <color name="returnFirstPageBtPressColor">#cb6948</color>
     <color name="vipShowMsgColor">#333333</color>
 </resources>

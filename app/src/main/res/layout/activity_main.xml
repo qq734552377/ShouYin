@@ -66,6 +66,7 @@
                 style="@style/show_money_text_style"
                 android:hint="￥0.00"
                 android:maxLines="4"
+                android:cursorVisible="false"
                 />
             <LinearLayout
                 android:layout_width="130dp"

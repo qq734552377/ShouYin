@@ -88,13 +88,19 @@
             style="@style/payway_linearlyout_item">
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/item_tianchong"
+            android:visibility="gone"
+            style="@style/payway_linearlyout_item">
+
+        </LinearLayout>
 
     </LinearLayout>
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:orientation="horizontal"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_height="wrap_content">
         <LinearLayout
             style="@style/payway_linearlyout_item">

@@ -2,11 +2,11 @@ package com.ucast.shouyin.tools;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AlertDialog;
-import android.view.View;
 import android.widget.Toast;
 
+import com.ucast.shouyin.R;
+import com.ucast.shouyin.num_view.MyBigTishiDialog;
+import com.ucast.shouyin.num_view.MyInputPasswordDialog;
 
 
 /**
@@ -38,5 +38,21 @@ public class MyDialog {
 //            dialog2.setTitle(mContext.getResources().getString(R.string.tishi));
         dialog2.setMessage(s);
         return dialog2;
+    }
+
+    public static MyBigTishiDialog createBigTishiDialog(Context context,String msg){
+        MyBigTishiDialog dialog = new MyBigTishiDialog(context, R.style.MyDialog);
+        dialog.setMsg(msg);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
+    }
+
+    public static MyInputPasswordDialog createInputPasswordDialog(Context context, MyInputPasswordDialog.OnInputCompleteListener listener){
+        MyInputPasswordDialog dialog = new MyInputPasswordDialog(context,R.style.MyDialog);
+        dialog.setInputCompleteListener(listener);
+        dialog.setCancelable(false);
+        dialog.setCanceledOnTouchOutside(false);
+        return dialog;
     }
 }

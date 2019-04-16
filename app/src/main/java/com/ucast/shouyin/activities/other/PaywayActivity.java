@@ -34,5 +34,6 @@ public class PaywayActivity extends AppCompatActivity {
 
         showOldMoneyNumber = findViewById(R.id.show_old_money_number);
         showOldMoneyNumber.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+        showOldMoneyNumber.setVisibility(View.GONE);
     }
 }
