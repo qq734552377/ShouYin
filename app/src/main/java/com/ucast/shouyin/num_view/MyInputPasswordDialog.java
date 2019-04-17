@@ -23,19 +23,14 @@ public class MyInputPasswordDialog extends Dialog implements View.OnClickListene
 
     private OnInputCompleteListener listener;
 
+    private String tishiMsg= "";
     private String moneyNumber = "";
 
     int[] edtIds = new int[6];
     ArrayList<TextView> passwordTvs;
 
+    private TextView tishi_msg_tv;
     private TextView moeny_number_tv;
-
-    private TextView password_input_1;
-    private TextView password_input_2;
-    private TextView password_input_3;
-    private TextView password_input_4;
-    private TextView password_input_5;
-    private TextView password_input_6;
 
     private Button num_1;
     private Button num_2;
@@ -88,6 +83,9 @@ public class MyInputPasswordDialog extends Dialog implements View.OnClickListene
             passwordTvs.add(etItem);
         }
 
+        tishi_msg_tv = findViewById(R.id.tishi_msg_tv);
+        tishi_msg_tv.setText(tishiMsg);
+
         moeny_number_tv = findViewById(R.id.moeny_number_tv);
         moeny_number_tv.setText(moneyNumber);
 
@@ -120,6 +118,11 @@ public class MyInputPasswordDialog extends Dialog implements View.OnClickListene
     public void setInputCompleteListener(OnInputCompleteListener inputCompleteListener){
         this.listener = inputCompleteListener;
     }
+    public void setTishiMsg(String msg){
+        this.tishiMsg = msg;
+        if (tishi_msg_tv != null)
+            tishi_msg_tv.setText(msg);
+    }
     public void setMoneyNumber(String moneyNumber){
         this.moneyNumber = moneyNumber;
         if (moeny_number_tv != null)
@@ -132,43 +135,46 @@ public class MyInputPasswordDialog extends Dialog implements View.OnClickListene
         if (currentPasswordInoutIndex >= passwordTvs.size())
             return;
         TextView item = passwordTvs.get(currentPasswordInoutIndex);
+        String itemStr = "";
+        if (v instanceof Button)
+            itemStr = ((Button) v).getText().toString().trim();
         if (item == null)
             return;
         switch (type){
             case R.id.num_0:
-                item.setText("0");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_1:
-                item.setText("1");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_2:
-                item.setText("2");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_3:
-                item.setText("3");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_4:
-                item.setText("4");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_5:
-                item.setText("5");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_6:
-                item.setText("6");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_7:
-                item.setText("7");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_8:
-                item.setText("8");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_9:
-                item.setText("9");currentPasswordInoutIndex ++;
+                item.setText(itemStr);currentPasswordInoutIndex ++;
                 break;
             case R.id.num_back:
                 if (currentPasswordInoutIndex > 0){
                     TextView lastItem = passwordTvs.get(currentPasswordInoutIndex - 1);
-                    lastItem.setText("");
+                    lastItem.setText(itemStr);
                     currentPasswordInoutIndex --;
                 }
                 break;

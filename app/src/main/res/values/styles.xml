@@ -49,7 +49,7 @@
     <style name="num_btn">
         <item name="android:layout_height">80dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@drawable/num_bt_font_color</item>
         <item name="android:background">@drawable/num_bt_background</item>
     </style>
@@ -69,11 +69,11 @@
     <style name="search_et">
         <item name="android:background">@drawable/search_edittext_background</item>
         <item name="android:singleLine">true</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
-        <item name="android:paddingRight">15dp</item>
-        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
     </style>
     <style name="login_et">
         <item name="android:background">@drawable/login_edittext_background</item>
@@ -145,8 +145,8 @@
     <style name="vip_show_msg">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">22sp</item>
+
         <item name="android:textColor">@color/vipShowMsgColor</item>
     </style>
     <style name="vip_circle">
@@ -163,8 +163,8 @@
         <item name="android:layout_marginTop">20dp</item>
     </style>
     <style name="payway_circle_iv">
-        <item name="android:layout_height">64dp</item>
-        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_width">56dp</item>
         <item name="android:layout_marginTop">0dp</item>
     </style>
 
@@ -175,12 +175,12 @@
         <item name="android:textColor">@drawable/pay_way_text_font_color</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
     </style>
 
     <style name="payway_linearlyout_item">
         <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_height">160dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">vertical</item>

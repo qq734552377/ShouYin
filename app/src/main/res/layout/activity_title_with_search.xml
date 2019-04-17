@@ -7,26 +7,78 @@
     tools:context=".activities.base.TitleWithSearchActivity">
 
 
-
-
-    <!--<include-->
-        <!--layout="@layout/item_order"/>-->
-
-
-
     <include
         android:id="@+id/title"
         layout="@layout/number_search_view"/>
-    <!--<LinearLayout-->
-        <!--android:paddingTop="50dp"-->
-        <!--android:orientation="vertical"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content">-->
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/title"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
 
-        <!--<include-->
-            <!--layout="@layout/item_text_with_edittext"/>-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content">
 
-    <!--</LinearLayout>-->
+            <TextView
+                style="@style/vip_show_msg"
+                android:text="您可以"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="24dp"
+            >
+            <TextView
+                style="@style/vip_circle"
+                />
+            <TextView
+                style="@style/vip_show_msg"
+                android:text="刷会员卡"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            >
+            <TextView
+                style="@style/vip_circle"
+                />
+            <TextView
+                style="@style/vip_show_msg"
+                android:text="输入手机号或卡号"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            >
+            <TextView
+                style="@style/vip_circle"
+                />
+            <TextView
+                style="@style/vip_show_msg"
+                android:text="扫描会员卡二维码"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <com.ucast.shouyin.num_view.NumberView
         android:id="@+id/keybord"
@@ -34,6 +86,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="5dp"
+        android:visibility="gone"
         >
 
     </com.ucast.shouyin.num_view.NumberView>

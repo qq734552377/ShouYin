@@ -9,6 +9,8 @@
     <string name="scan_result">scan_result</string>
     <string name="chuzhika">储值卡</string>
     <string name="saomazhifu">扫码支付</string>
+    <string name="zhifubao">支付宝</string>
+    <string name="weixin">微信</string>
     <string name="yinhangka">银行卡</string>
     <string name="huiyuan">会员</string>
     <string name="xianjin">现金</string>

@@ -68,6 +68,14 @@
                 style="@style/payway_tv"
                 android:text="会员卡"
                 />
+            <TextView
+                style="@style/payway_tv"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:textSize="16sp"
+                android:text="可用￥400.00"
+                android:textColor="@drawable/pay_way_vip_money_font_color"
+                />
 
 
         </LinearLayout>

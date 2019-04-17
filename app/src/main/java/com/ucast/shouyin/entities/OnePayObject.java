@@ -1,5 +1,7 @@
 package com.ucast.shouyin.entities;
 
+import com.ucast.shouyin.tools.MyTools;
+
 import java.util.ArrayList;
 
 /**
@@ -9,9 +11,11 @@ public class OnePayObject {
     private float totalPayMoney;
     private float payedMoney;
     private float willPayMoney;
+    private float currentWillPayMoney;
     private boolean isVipPay = false;
     private float discount;
     private String payID;
+    private Employee shouyinYuan;
     private boolean isPayedOK;
     private ArrayList<PayedMoneyWithType> allPayedMoneys;
 
@@ -43,6 +47,14 @@ public class OnePayObject {
         this.willPayMoney = willPayMoney;
     }
 
+    public float getCurrentWillPayMoney() {
+        return currentWillPayMoney;
+    }
+
+    public void setCurrentWillPayMoney(float currentWillPayMoney) {
+        this.currentWillPayMoney = currentWillPayMoney;
+    }
+
     public boolean isVipPay() {
         return isVipPay;
     }
@@ -67,12 +79,34 @@ public class OnePayObject {
         this.payID = payID;
     }
 
+    public Employee getShouyinYuan() {
+        return shouyinYuan;
+    }
+
+    public void setShouyinYuan(Employee shouyinYuan) {
+        this.shouyinYuan = shouyinYuan;
+    }
+
     public boolean isPayedOK() {
         return isPayedOK;
     }
 
     public void setPayedOK(boolean payedOK) {
         isPayedOK = payedOK;
+    }
+
+    public String getAllPayedMoney(){
+        if (allPayedMoneys.size() == 0){
+            return "￥0.00";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < allPayedMoneys.size(); i++) {
+            PayedMoneyWithType item = allPayedMoneys.get(i);
+            sb.append(item.getPayType().getName());
+            sb.append("  ￥");
+            sb.append(MyTools.floatToLastTwoString(item.getMoneyNumber()));
+        }
+        return sb.toString();
     }
 
     public void addOnePayedMoneyWithType(PayedMoneyWithType oneItem){
@@ -91,6 +125,7 @@ public class OnePayObject {
         setTotalPayMoney(0f);
         setPayedMoney(0f);
         setWillPayMoney(0f);
+        setCurrentWillPayMoney(0f);
         setVipPay(false);
         setDiscount(0f);
         setPayedOK(false);

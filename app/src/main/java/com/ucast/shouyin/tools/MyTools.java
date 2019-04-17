@@ -11,6 +11,8 @@ import android.view.inputmethod.InputMethodManager;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by pj on 2019/1/28.
@@ -31,6 +33,55 @@ public class MyTools {
 
 
 
+    public static Date stringToDate(String s) {
+        Date time = null;
+        SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        try {
+            time = sd.parse(s);
+        } catch (java.text.ParseException e) {
+            System.out.println("输入的日期格式有误！");
+            e.printStackTrace();
+        }
+        return time;
+    }
+
+
+    public static long getIntToMillis(String str) {
+        String str_date = str + " " + "00:00:00";
+        Date date = stringToDate(str_date);
+        return date.getTime();
+    }
+
+    public static String millisToDateString(long time) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date;
+        Date curDate = new Date(time);
+        date = formatter.format(curDate);
+        return date;
+    }
+
+
+    public static String millisToDateStringNoSpace(long time) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd_HHmmss");
+        String date;
+        Date curDate = new Date(time);
+        date = formatter.format(curDate);
+        return date;
+    }
+    public static String millisToYinLianDateString(long time) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
+        String date;
+        Date curDate = new Date(time);
+        date = formatter.format(curDate);
+        return date;
+    }
+    public static String millisToDateStringOnlyYMD(long time) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String date;
+        Date curDate = new Date(time);
+        date = formatter.format(curDate);
+        return date;
+    }
 
 
     public static void writeToFile(String path , String data){
@@ -125,6 +176,45 @@ public class MyTools {
         dest[dest.length - 1] = jiaoYan;
         return dest;
     }
+
+
+    public static float stringToFloat(String text){
+        float money = 0f;
+        if (text.length() >= 2){
+            String str = text.substring(1,text.length());
+            try {
+                money = Float.parseFloat(str);
+            }catch (Exception e){
+
+            }
+        }
+        return money;
+    }
+
+    public static String floatToLastTwoString(float one){
+        String result = String.format("%.2f",one);
+        return result;
+    }
+
+    public static int stringToInt(String text){
+        int money = 0;
+        if (text.length() >= 2){
+            String str = text.substring(1,text.length());
+            try {
+                float moneyFloat = Float.parseFloat(str);
+                money =(int)( moneyFloat * 100f);
+            }catch (Exception e){
+
+            }
+        }
+        return money;
+    }
+
+    public static String getOnePayID(){
+        String id = millisToYinLianDateString(System.currentTimeMillis());
+        return id;
+    }
+
     /**
      * 隐藏输入软键盘
      * @param context
@@ -133,7 +223,7 @@ public class MyTools {
     public static void hideInputManager(Context context,View view){
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         if (view !=null && imm != null){
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);  //强制隐藏
+            imm.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.RESULT_UNCHANGED_SHOWN);  //强制隐藏
         }
     }
 }

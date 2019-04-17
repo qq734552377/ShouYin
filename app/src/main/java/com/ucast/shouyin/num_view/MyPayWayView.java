@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.ucast.shouyin.R;
+import com.ucast.shouyin.activities.base.TitleWithSearchActivity;
 import com.ucast.shouyin.activities.other.Payway2Activity;
 import com.ucast.shouyin.entities.PayObjectSingleInsance;
 import com.ucast.shouyin.entities.PayType;
@@ -59,6 +60,7 @@ public class MyPayWayView extends LinearLayout implements View.OnClickListener {
         switch (v.getId()){
             case R.id.chuzhika:
                 payType = PayType.CHUZHIKA;
+                i = new Intent(this.getContext(), TitleWithSearchActivity.class);
                 break;
             case R.id.saomazhifu:
                 payType = PayType.SAOMAZHIFU;

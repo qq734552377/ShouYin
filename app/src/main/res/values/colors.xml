@@ -18,5 +18,5 @@
     <color name="loginBtPressedColor">#0088EE</color>
     <color name="returnFirstPageBtColor">@color/colorPrimary</color>
     <color name="returnFirstPageBtPressColor">#cb6948</color>
-    <color name="vipShowMsgColor">#333333</color>
+    <color name="vipShowMsgColor">#999999</color>
 </resources>

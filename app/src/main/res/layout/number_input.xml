@@ -102,7 +102,7 @@
                 style="@style/num_btn"
                 />
             <Button
-                android:id="@+id/num_empty"
+                android:id="@+id/num_point"
 
                 android:text="."
                 style="@style/num_btn"

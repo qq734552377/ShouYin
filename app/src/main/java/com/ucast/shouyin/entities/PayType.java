@@ -11,6 +11,8 @@ import java.io.Serializable;
 public enum PayType implements Serializable {
     CHUZHIKA(ExceptionApplication.getInstance().getString(R.string.chuzhika),R.string.chuzhika),
     SAOMAZHIFU(ExceptionApplication.getInstance().getString(R.string.saomazhifu),R.string.saomazhifu),
+    ZHIFUBAO(ExceptionApplication.getInstance().getString(R.string.zhifubao),R.string.zhifubao),
+    WEIXIN(ExceptionApplication.getInstance().getString(R.string.weixin),R.string.weixin),
     YINHANGKA(ExceptionApplication.getInstance().getString(R.string.yinhangka),R.string.yinhangka),
     HUIYUANKA(ExceptionApplication.getInstance().getString(R.string.huiyuan),R.string.huiyuan),
     XIANJIN(ExceptionApplication.getInstance().getString(R.string.xianjin),R.string.xianjin);
