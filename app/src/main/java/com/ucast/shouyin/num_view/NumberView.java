@@ -58,6 +58,10 @@ public class NumberView extends LinearLayout implements View.OnClickListener {
         this.out_editText = ed;
     }
 
+    public void setEditerText(String str){
+        if (this.out_editText != null)
+            this.out_editText.setText(str);
+    }
     public String getEditerText(){
         String str = "";
         if (this.out_editText != null)

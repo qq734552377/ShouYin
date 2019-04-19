@@ -14,4 +14,22 @@
     <string name="yinhangka">银行卡</string>
     <string name="huiyuan">会员</string>
     <string name="xianjin">现金</string>
+    <string name="money_hint">￥0.00</string>
+    <string name="yl_appid">appId</string>
+    <string name="yl_timestamp">timestamp</string>
+    <string name="yl_nonce">nonce</string><!--随机数-->
+    <string name="yl_signature">signature</string>
+    <string name="yl_merchantCode">merchantCode</string><!--商户号 必须-->
+    <string name="yl_terminalCode">terminalCode</string><!--终端号 必须-->
+    <string name="yl_transactionAmount">transactionAmount</string><!--交易金额 必须-->
+    <string name="yl_transactionCurrencyCode">transactionCurrencyCode</string><!--交易币种 必须-->
+    <string name="yl_merchantOrderId">merchantOrderId</string><!--商户订单号 必须-->
+    <string name="yl_merchantRemark">merchantRemark</string><!--商户备注 必须-->
+    <string name="yl_payMode">payMode</string><!--支付方式 必须 -->
+    <string name="yl_payMode_ECASH">E_CASH</string><!--电子现金-->
+    <string name="yl_payMode_SOUNDWAVE">SOUNDWAVE</string><!--声波-->
+    <string name="yl_payMode_NFC">NFC</string><!--NFC-->
+    <string name="yl_payMode_CODESCAN">CODE_SCAN</string><!--扫码-->
+    <string name="yl_payMode_MANUAL">MANUAL</string><!--手输-->
+    <string name="yl_payCode">payCode</string><!--支付码 必须-->
 </resources>

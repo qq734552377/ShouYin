@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_edittext_background"
                 style="@style/show_money_text_style"
-                android:hint="￥0.00"
+                android:hint="@string/money_hint"
                 android:maxLines="4"
                 android:cursorVisible="false"
                 />

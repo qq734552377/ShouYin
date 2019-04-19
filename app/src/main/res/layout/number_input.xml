@@ -5,6 +5,7 @@
     android:orientation="vertical"
     >
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -15,6 +16,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+            <ImageView
+                style="@style/horizontal_line_btn_style"
+                />
             <Button
                 android:id="@+id/num_1"
 
@@ -49,6 +53,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+            <ImageView
+                style="@style/horizontal_line_btn_style"
+                />
             <Button
                 android:id="@+id/num_2"
 
@@ -83,6 +90,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
+            <ImageView
+                style="@style/horizontal_line_btn_style"
+                />
             <Button
                 android:id="@+id/num_3"
 
@@ -107,6 +117,7 @@
                 android:text="."
                 style="@style/num_btn"
                 />
+
         </LinearLayout>
         <LinearLayout
             android:id="@+id/four"
@@ -115,25 +126,30 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
+            <ImageView
+                style="@style/horizontal_line_btn_style"
+                />
             <Button
                 android:id="@+id/num_clear"
                 android:text="清除"
                 style="@style/num_btn"
+                android:layout_height="0dp"
                 android:layout_weight="1"
                 />
+
             <Button
                 android:id="@+id/num_back"
-                android:text="回退"
                 style="@style/num_btn"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                />
+                android:text="退格" />
             <Button
                 android:id="@+id/num_affirm"
                 android:text="确认"
                 style="@style/num_btn"
-                android:layout_height="160dp"
+                android:layout_height="0dp"
+                android:layout_weight="2"
                 />
-
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -146,7 +162,6 @@
         <Button
             android:id="@+id/bt_vip_do"
             android:layout_width="0dp"
-            android:layout_height="120dp"
             android:layout_weight="1"
             android:text="会员"
             style="@style/num_btn"
@@ -154,7 +169,6 @@
         <Button
             android:id="@+id/bt_no_vip_do"
             android:layout_width="0dp"
-            android:layout_height="120dp"
             android:layout_weight="1"
             android:text="非会员"
             style="@style/num_btn"

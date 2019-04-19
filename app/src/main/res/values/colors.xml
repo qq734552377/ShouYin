@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#fb8158</color>
     <color name="colorAccent">@color/colorPrimary</color>
     <color name="white">#FFFFFF</color>
-    <color name="numkeyBackground">#eeeeee</color>
+    <color name="numkeyBackgroundColor">#eeeeee</color>
+    <color name="numkeyLineColor">#999999</color>
     <color name="numkeyTextColor">#000000</color>
     <color name="numkeyTextPressColor">#FFFFFF</color>
     <color name="paywayTextColor">#999999</color>

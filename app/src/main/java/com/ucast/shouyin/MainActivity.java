@@ -21,6 +21,7 @@ import com.ucast.shouyin.num_view.NumberView;
 import com.ucast.shouyin.tools.MyDialog;
 import com.ucast.shouyin.tools.MyTools;
 import com.ucast.shouyin.tools.ToastUtil;
+import com.ucast.shouyin.yl.YinlianToken;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -53,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+//        try {
+//            YinlianToken.mainTest();
+//        }catch (Exception e){}
         titleView = findViewById(R.id.mytitle);
         numberView = findViewById(R.id.mynumberview);
         numberView.setAffirmBtVisibility(false);
@@ -113,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 onePayObject.setPayID(MyTools.getOnePayID());
                 onePayObject.setShouyinYuan(EmployeeSingleInstance.getInstance().getOneEmployee());
                 onePayObject.setPayedOK(false);
-
+                view.setEditerText(getShowString(totalMoney));
 
                 PayObjectSingleInsance.getInstance().setOnePayObject(onePayObject);
                 Intent i  = new Intent(MainActivity.this, PaywayActivity.class);
@@ -143,7 +147,9 @@ public class MainActivity extends AppCompatActivity {
         });
         return toolbar;
     }
-
+    public String getShowString(float money){
+        return "￥" + MyTools.floatToLastTwoString(money);
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {

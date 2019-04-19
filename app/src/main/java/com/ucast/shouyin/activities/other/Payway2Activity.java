@@ -47,7 +47,7 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
             onePayObject = PayObjectSingleInsance.getInstance().getOnePayObject();
 
         tv_payedMoney = findViewById(R.id.payed_money);
-        tv_payedMoney.setText(onePayObject.getAllPayedMoney());
+        tv_payedMoney.setText(getShowString(onePayObject.getPayedMoney()));
 
         tv_willPayMoney = findViewById(R.id.will_pay_money);
         tv_willPayMoney.setText(getShowString(onePayObject.getWillPayMoney()));
@@ -120,6 +120,12 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
                 ToastUtil.showToast(Payway2Activity.this,"请输入大于0的金额");
                 return;
             }
+            if (currentWillPayMoney > onePayObject.getWillPayMoney()){
+                ToastUtil.showToast(Payway2Activity.this,"付款的金额大于待付的金额，请检查！");
+                return;
+            }
+
+            view.setEditerText(getShowString(currentWillPayMoney));
             onePayObject.setCurrentWillPayMoney(currentWillPayMoney);
 
             startUcastCamera(0);

@@ -47,12 +47,18 @@
     </style>
 
     <style name="num_btn">
-        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_height">130dp</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textColor">@drawable/num_bt_font_color</item>
         <item name="android:background">@drawable/num_bt_background</item>
     </style>
+    <style name="horizontal_line_btn_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/numkeyLineColor</item>
+    </style>
+
     <style name="dialog_num_btn">
         <item name="android:layout_height">60dp</item>
         <item name="android:layout_width">0dp</item>
