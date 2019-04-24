@@ -9,12 +9,14 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.ucast.shouyin.R;
+import com.ucast.shouyin.tools.ToastUtil;
 
 /**
  * Created by pj on 2019/3/21.
  */
 public class NumberView extends LinearLayout implements View.OnClickListener {
     private int pointBackNumberCount = 2;
+    public static float MAXMONEYNUMBER = 99999.99f;
 
     private Button bt_num_0;
     private Button bt_num_1;
@@ -167,6 +169,11 @@ public class NumberView extends LinearLayout implements View.OnClickListener {
                     return;
                 }
                 numBtnOperation("00");
+                text = out_editText.getText().toString();
+                if (stringToFloat() > MAXMONEYNUMBER){
+                    ToastUtil.showToast(getContext(),getContext().getString(R.string.only_99999));
+                    numBackOneString();
+                }
                 break;
 
             case R.id.num_point:
@@ -215,6 +222,11 @@ public class NumberView extends LinearLayout implements View.OnClickListener {
             default:
 
                 break;
+        }
+        text = out_editText.getText().toString();
+        if (stringToFloat() > MAXMONEYNUMBER){
+            ToastUtil.showToast(getContext(),getContext().getString(R.string.only_99999));
+            numBackOneString();
         }
     }
 

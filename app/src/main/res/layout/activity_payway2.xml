@@ -103,6 +103,29 @@
                 />
 
         </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="32dp"
+            >
+            <TextView
+                android:id="@+id/zhaoling_msg_tv"
+                style="@style/one_line_two_textview_style"
+                android:text="找零"
+                />
+            <TextView
+                android:id="@+id/zhaoling_number_tv"
+                style="@style/one_line_two_textview_style"
+                android:background="@drawable/login_edittext_background"
+                android:text="￥0.00"
+                android:gravity="right"
+                android:lines="1"
+                android:textColor="@color/colorPrimary"
+                android:cursorVisible="false"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

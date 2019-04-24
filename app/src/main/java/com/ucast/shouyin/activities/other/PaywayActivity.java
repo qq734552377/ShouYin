@@ -1,6 +1,7 @@
 package com.ucast.shouyin.activities.other;
 
 import android.graphics.Paint;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -29,7 +30,7 @@ public class PaywayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_payway);
         onePayObject = PayObjectSingleInsance.getInstance().getOnePayObject();
         initViews();
-
+        MyTools.hiddenBottom(this);
     }
 
     private void initViews() {
@@ -56,6 +57,10 @@ public class PaywayActivity extends AppCompatActivity {
         tv_willPayMoneyNumber = findViewById(R.id.will_pay_money);
         tv_willPayMoneyNumber.setText(getShowString(onePayObject.getWillPayMoney()));
 
+
+    }
+    @Override
+    public void onBackPressed() {
 
     }
 

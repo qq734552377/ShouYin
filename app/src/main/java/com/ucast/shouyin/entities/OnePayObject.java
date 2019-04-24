@@ -1,5 +1,10 @@
 package com.ucast.shouyin.entities;
 
+import android.content.Context;
+import android.support.v7.widget.ContentFrameLayout;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import com.ucast.shouyin.tools.Config;
 import com.ucast.shouyin.tools.MyTools;
 
 import java.util.ArrayList;
@@ -12,6 +17,7 @@ public class OnePayObject {
     private float payedMoney;
     private float willPayMoney;
     private float currentWillPayMoney;
+//    private float zhaolingMoney;
     private boolean isVipPay = false;
     private float discount;
     private String payID;
@@ -95,6 +101,27 @@ public class OnePayObject {
         isPayedOK = payedOK;
     }
 
+    public ArrayList<PayedMoneyWithType> getAllPayedMoneys() {
+        return allPayedMoneys;
+    }
+
+    public void setAllPayedMoneys(ArrayList<PayedMoneyWithType> allPayedMoneys) {
+        this.allPayedMoneys = allPayedMoneys;
+    }
+
+    @JSONField(serialize = false)
+    public String getAllPayedType(){
+        if (allPayedMoneys.size() == 0){
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < allPayedMoneys.size(); i++) {
+            PayedMoneyWithType item = allPayedMoneys.get(i);
+            sb.append(item.getPayType().getName() + "、");
+        }
+        return sb.toString();
+    }
+    @JSONField(serialize = false)
     public String getAllPayedMoney(){
         if (allPayedMoneys.size() == 0){
             return "￥0.00";
@@ -105,21 +132,74 @@ public class OnePayObject {
             sb.append(item.getPayType().getName());
             sb.append("  ￥");
             sb.append(MyTools.floatToLastTwoString(item.getMoneyNumber()));
+            if (i != allPayedMoneys.size() - 1){
+                sb.append(" ");
+            }
         }
         return sb.toString();
     }
-
-    public void addOnePayedMoneyWithType(PayedMoneyWithType oneItem){
+    @JSONField(serialize = false)
+    public boolean addOnePayedMoneyWithType(PayedMoneyWithType oneItem){
         if (isPayedOK)
-            return;
+            return false;
         this.allPayedMoneys.add(oneItem);
         this.payedMoney += oneItem.getMoneyNumber();
         this.willPayMoney -= oneItem.getMoneyNumber();
-        if ((this.payedMoney + this.discount) == this.totalPayMoney){
+        this.currentWillPayMoney = this.willPayMoney;
+        if ((this.payedMoney + this.discount) == this.totalPayMoney){//结账完毕
             isPayedOK = true;
+            return true;
         }
+        if(oneItem.getPayType() == PayType.XIANJIN && (this.payedMoney + this.discount) > this.totalPayMoney){// 付钱过多  需添加找零
+            isPayedOK = true;
+            PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(PayType.ZHAOLING,this.willPayMoney);
+            this.allPayedMoneys.add(payedMoneyWithType);
+            return true;
+        }
+        return true;
+    }
+    @JSONField(serialize = false)
+    public String getShowMoneyString(){
+        if (allPayedMoneys.size() == 0){
+            return "";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < allPayedMoneys.size(); i++) {
+            PayedMoneyWithType item = allPayedMoneys.get(i);
+            String pay_type_str = item.getPayType().getName();
+            String pay_number_str = "￥" + MyTools.floatToLastTwoString(Math.abs(item.getMoneyNumber()));
+            int spaceNum = 0;
+            try {
+               spaceNum = Config.ONELINEMONEYSHOWNUMBER - pay_type_str.getBytes(Config.CHARSET).length - pay_number_str.getBytes(Config.CHARSET).length;
+            }catch (Exception e){
+
+            }
+            sb.append(pay_type_str);
+            for (int j = 0; j < spaceNum; j++) {
+                sb.append(" ");
+            }
+            sb.append(pay_number_str);
+
+            if (i != allPayedMoneys.size() - 1){
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
+    }
+    @JSONField(serialize = false)
+    public float getAllPayedMoneyFloat(){
+        float money = 0f;
+        for (int i = 0; i < allPayedMoneys.size(); i++) {
+            PayedMoneyWithType item = allPayedMoneys.get(i);
+            if (item.getPayType() == PayType.ZHAOLING){
+                continue;
+            }
+            money += item.getMoneyNumber();
+        }
+        return money;
     }
 
+    @JSONField(serialize = false)
     public void initAllThing(){
         setPayID(null);
         setTotalPayMoney(0f);

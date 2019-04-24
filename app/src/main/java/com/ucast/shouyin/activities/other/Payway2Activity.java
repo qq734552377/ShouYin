@@ -2,9 +2,12 @@ package com.ucast.shouyin.activities.other;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
@@ -32,6 +35,8 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
 
     private TextView tv_payType;
     private EditText currentWillPayMoneyNumber;
+    private TextView tv_zhaoling;
+    private TextView tv_zhaoling_number;
 
     private MyInputPasswordDialog inputPasswordDialog;
     @Override
@@ -40,6 +45,7 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
         setContentView(R.layout.activity_payway2);
         initToolbar(R.id.toolbar,R.id.toolbar_title,getTitleName());
         initViews();
+        MyTools.hiddenBottom(this);
     }
 
     private void initViews() {
@@ -69,7 +75,6 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
             }
         });
 
-
         if (inputPasswordDialog == null)
             inputPasswordDialog = MyDialog.createInputPasswordDialog(this, new MyInputPasswordDialog.OnInputCompleteListener() {
                 @Override
@@ -78,6 +83,44 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
                     dialog.dismiss();
                 }
             });
+        tv_zhaoling = findViewById(R.id.zhaoling_msg_tv);
+        tv_zhaoling_number = findViewById(R.id.zhaoling_number_tv);
+        if (payType == PayType.XIANJIN){
+            tv_zhaoling.setVisibility(View.GONE);
+            tv_zhaoling_number.setVisibility(View.GONE);
+
+            tv_zhaoling.setText("找零");
+            currentWillPayMoneyNumber.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    String text = currentWillPayMoneyNumber.getText().toString();
+                    float currentWillPayMoney = MyTools.stringToFloat(text);
+                    if (currentWillPayMoney > onePayObject.getWillPayMoney()){
+                        tv_zhaoling.setVisibility(View.VISIBLE);
+                        tv_zhaoling_number.setVisibility(View.VISIBLE);
+                        tv_zhaoling_number.setText(getShowString(currentWillPayMoney - onePayObject.getWillPayMoney()));
+                    }else {
+                        tv_zhaoling.setVisibility(View.GONE);
+                        tv_zhaoling_number.setVisibility(View.GONE);
+                        tv_zhaoling_number.setText("￥0.00");
+                    }
+                }
+            });
+
+        }else {
+            tv_zhaoling.setVisibility(View.GONE);
+            tv_zhaoling_number = findViewById(View.GONE);
+        }
     }
 
     public int getTitleName(){
@@ -113,9 +156,10 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
 
     @Override
     public void onConfirmClicked(NumberView view) {
+        String str = view.getEditerText();
+        float currentWillPayMoney = MyTools.stringToFloat(str);
+
         if (payType == PayType.SAOMAZHIFU) {
-            String str = view.getEditerText();
-            float currentWillPayMoney = MyTools.stringToFloat(str);
             if (currentWillPayMoney == 0f){
                 ToastUtil.showToast(Payway2Activity.this,"请输入大于0的金额");
                 return;
@@ -124,12 +168,19 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
                 ToastUtil.showToast(Payway2Activity.this,"付款的金额大于待付的金额，请检查！");
                 return;
             }
-
             view.setEditerText(getShowString(currentWillPayMoney));
             onePayObject.setCurrentWillPayMoney(currentWillPayMoney);
-
             startUcastCamera(0);
-
+            return;
+        }
+        if (payType == PayType.XIANJIN){
+            if (currentWillPayMoney == 0f){
+                ToastUtil.showToast(Payway2Activity.this,"请输入大于0的金额");
+                return;
+            }
+            view.setEditerText(getShowString(currentWillPayMoney));
+            onePayObject.setCurrentWillPayMoney(currentWillPayMoney);
+            startPayResult(null);
             return;
         }
 //        inputPasswordDialog.setTishiMsg("输入储值卡密码");
@@ -168,9 +219,23 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
             default:
                 break;
         }
-        MyDialog.showToast(this,r);
+        startPayResult(r);
+    }
+
+    public void startPayResult(String scanResult){
         Intent i = new Intent(this, PaywayResultActivity.class);
-        i.putExtra(getString(R.string.scan_result), r);
+        String key = getString(R.string.pay_type);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(key, payType);
+        i.putExtras(bundle);
+        if (scanResult != null)
+            i.putExtra(getString(R.string.scan_result), scanResult);
         startActivity(i);
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
 }

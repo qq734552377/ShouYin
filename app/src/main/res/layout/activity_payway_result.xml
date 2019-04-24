@@ -130,9 +130,10 @@
                     />
                 <TextView
                     android:id="@+id/shifu_show_tv"
-                    android:paddingBottom="10dp"
+                    android:paddingBottom="20dp"
                     android:layout_height="wrap_content"
                     style="@style/paresult_right_show_msg_tv"
+                    android:textSize="22sp"
                     android:text="￥100.00\n储值卡   ￥10.00\n支付宝   ￥10.00\n银行卡   ￥10.00\n会员卡   ￥10.00\n现金    ￥60.00"
                     />
             </LinearLayout>

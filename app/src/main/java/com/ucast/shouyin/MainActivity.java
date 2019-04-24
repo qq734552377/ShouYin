@@ -1,7 +1,10 @@
 package com.ucast.shouyin;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.KeyguardManager;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +21,7 @@ import com.ucast.shouyin.entities.OnePayObject;
 import com.ucast.shouyin.entities.PayObjectSingleInsance;
 import com.ucast.shouyin.num_view.MyTitleView;
 import com.ucast.shouyin.num_view.NumberView;
+import com.ucast.shouyin.tools.Config;
 import com.ucast.shouyin.tools.MyDialog;
 import com.ucast.shouyin.tools.MyTools;
 import com.ucast.shouyin.tools.ToastUtil;
@@ -51,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         initViews();
+        MyTools.hiddenBottom(this);
     }
 
     private void initViews() {
@@ -157,4 +162,9 @@ public class MainActivity extends AppCompatActivity {
         // Forward results to EasyPermissions
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
+    @Override
+    public void onBackPressed() {
+
+    }
+
 }

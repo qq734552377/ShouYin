@@ -9,5 +9,9 @@ public class Config {
     public static int PORTBAUDRATE = 115200;
     public static String PORTPATHE = "";
 
+    public static boolean isHiddenBottom = false;
+    public static String DBNAME = "ucast_shouyin";
+    public static int ONELINEMONEYSHOWNUMBER = 20;
+    public static String CHARSET = "GB18030";
     public static String LOGPATH = CrashHandler.ALBUM_PATH + "/simpleLog.txt";
 }
