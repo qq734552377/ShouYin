@@ -41,6 +41,9 @@ public class SavePasswd {
     public final static String EMPLOYEENAME = "employeeName";
     public final static String STOREID = "storeID";
     public final static String STORENAME = "storeName";
+    public final static String TOKEN = "token";
+    public final static String LASTTOKENTIME = "lastTokenTime";
+
 
 
     private static String[] xmlKeys = {ISOPENPRINT,ISAUTOMONEYBOX,ISNETPRINTUPLOADTOSERVICE,BMPUPLOADHOST,HEARTBEATHOST};

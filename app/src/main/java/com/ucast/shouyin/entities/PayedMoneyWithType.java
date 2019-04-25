@@ -9,13 +9,15 @@ public class PayedMoneyWithType {
 
     private PayType payType;
     private float moneyNumber;
+    private String payerID;
 
     public PayedMoneyWithType() {
     }
 
-    public PayedMoneyWithType(PayType payType, float moneyNumber) {
+    public PayedMoneyWithType(PayType payType, float moneyNumber,String payerID) {
         this.payType = payType;
         this.moneyNumber = moneyNumber;
+        this.payerID = payerID;
     }
     @JSONField(name = "paytype")
     public int getPaytypeInt(){
@@ -42,5 +44,13 @@ public class PayedMoneyWithType {
 
     public void setMoneyNumber(float moneyNumber) {
         this.moneyNumber = moneyNumber;
+    }
+
+    public String getPayerID() {
+        return payerID;
+    }
+
+    public void setPayerID(String payerID) {
+        this.payerID = payerID;
     }
 }

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.v7.widget.ContentFrameLayout;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.ucast.shouyin.R;
+import com.ucast.shouyin.exception.ExceptionApplication;
 import com.ucast.shouyin.tools.Config;
 import com.ucast.shouyin.tools.MyTools;
 
@@ -152,7 +154,7 @@ public class OnePayObject {
         }
         if(oneItem.getPayType() == PayType.XIANJIN && (this.payedMoney + this.discount) > this.totalPayMoney){// 付钱过多  需添加找零
             isPayedOK = true;
-            PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(PayType.ZHAOLING,this.willPayMoney);
+            PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(PayType.ZHAOLING,this.willPayMoney, ExceptionApplication.getInstance().getString(R.string.defult_xianjin_payer_id));
             this.allPayedMoneys.add(payedMoneyWithType);
             return true;
         }

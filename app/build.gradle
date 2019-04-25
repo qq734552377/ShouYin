@@ -51,7 +51,7 @@ dependencies {
     implementation files('libs/android-logging-log4j-1.0.3.jar')
     implementation 'com.alibaba:fastjson:1.1.58.android'
     implementation 'pub.devrel:easypermissions:0.1.9'
-    implementation files('libs/commons-codec-1.10.jar')
+//    implementation files('libs/commons-codec-1.10.jar')
     implementation files('libs/connect_api_beta20170210.jar')
     implementation files('libs/umsipsV1_7.jar')
 }

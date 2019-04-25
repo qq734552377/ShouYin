@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.provider.Settings;
+import android.util.Base64;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -19,7 +20,6 @@ import java.util.Date;
  * Created by pj on 2019/1/28.
  */
 public class MyTools {
-    public static final String TOKEN ="info";
     public static final String LOGIN_ID ="login_id";
     public static final String PASSWORD ="password";
     public static final String EMP_NAME ="emp_name";
@@ -33,6 +33,24 @@ public class MyTools {
     public static final String OVERTIME_ID ="overtime_id";
 
 
+    public static String encode(byte[] bstr) {
+        return Base64.encodeToString(bstr, Base64.NO_WRAP);
+    }
+
+
+    /**
+     * 解码
+     *
+     * @param str
+     * @return string
+     */
+    public static byte[] decode(String str) {
+        try {
+            return Base64.decode(str, Base64.NO_WRAP);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public static Date stringToDate(String s) {
         Date time = null;

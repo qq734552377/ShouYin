@@ -14,4 +14,7 @@ public class Config {
     public static int ONELINEMONEYSHOWNUMBER = 20;
     public static String CHARSET = "GB18030";
     public static String LOGPATH = CrashHandler.ALBUM_PATH + "/simpleLog.txt";
+
+
+    public static long TOKENTIMEOUT = 58 * 60 * 1000;
 }

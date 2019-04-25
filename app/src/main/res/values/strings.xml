@@ -19,11 +19,15 @@
 
 
     <string name="only_99999">输入的金额最大99999.99，请确认！</string>
+    <string name="zhifu_ing">正在支付中，\n请稍后...</string>
+    <string name="defult_time">2010-10-10 02:02:02</string>
+    <string name="defult_xianjin_payer_id">个人</string>
 
     <string name="yl_appid">appId</string>
     <string name="yl_timestamp">timestamp</string>
     <string name="yl_nonce">nonce</string><!--随机数-->
     <string name="yl_signature">signature</string>
+    <string name="yl_authorization">Authorization</string>
     <string name="yl_merchantCode">merchantCode</string><!--商户号 必须-->
     <string name="yl_terminalCode">terminalCode</string><!--终端号 必须-->
     <string name="yl_transactionAmount">transactionAmount</string><!--交易金额 必须-->

@@ -25,6 +25,7 @@ import com.ucast.shouyin.tools.Config;
 import com.ucast.shouyin.tools.MyDialog;
 import com.ucast.shouyin.tools.MyTools;
 import com.ucast.shouyin.tools.ToastUtil;
+import com.ucast.shouyin.yl.HttpReauestUrl;
 import com.ucast.shouyin.yl.YinlianToken;
 
 import pub.devrel.easypermissions.EasyPermissions;
@@ -59,9 +60,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-//        try {
-//            YinlianToken.mainTest();
-//        }catch (Exception e){}
+        try {
+            YinlianToken.mainTest();
+        }catch (Exception e){}
+
+//        String r = YinlianToken.testSHA256_STRING("e");
+        HttpReauestUrl.getToken(this,false);
         titleView = findViewById(R.id.mytitle);
         numberView = findViewById(R.id.mynumberview);
         numberView.setAffirmBtVisibility(false);
