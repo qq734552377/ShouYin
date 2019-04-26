@@ -119,7 +119,7 @@ public class Payway2Activity extends AppCompatActivity implements NumberView.OnC
 
         }else {
             tv_zhaoling.setVisibility(View.GONE);
-            tv_zhaoling_number = findViewById(View.GONE);
+            tv_zhaoling_number.setVisibility(View.GONE);
         }
     }
 
