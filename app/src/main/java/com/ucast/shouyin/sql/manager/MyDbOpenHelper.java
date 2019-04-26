@@ -11,11 +11,15 @@ import com.ucast.shouyin.tools.Config;
  */
 public class MyDbOpenHelper extends SQLiteOpenHelper {
     public static String ALLPAYOBJTABLENAME = "allpayobj";
+    public static String PAYNUMBERTABLENAME = "paynumber";
 
     public static String id = "id";
     public static String allpayobjPayMsg = "pay_msg";
-    public static String allpayobjCreateTime = "create_time_only_day";
+    public static String createTime = "create_time";
+    public static String createTimeOnlyDay = "create_time_only_day";
     public static String orderById = id + " desc";
+
+    public static String payNumber = "pay_number";
 
     private SQLiteDatabase db;
 
@@ -29,7 +33,13 @@ public class MyDbOpenHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE " + ALLPAYOBJTABLENAME + " ("
                 + id +" INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + allpayobjPayMsg + " TEXT,"
-                + allpayobjCreateTime +" VARCHAR(50))");
+                + createTime + " VARCHAR(50),"
+                + createTimeOnlyDay +" VARCHAR(50))");
+
+        db.execSQL("CREATE TABLE " + PAYNUMBERTABLENAME + " ("
+                + id +" INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + payNumber + " INTEGER,"
+                + createTimeOnlyDay + " VARCHAR(50))");
     }
 
     @Override

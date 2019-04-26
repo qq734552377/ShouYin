@@ -1,5 +1,6 @@
 package com.ucast.shouyin.activities.other;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
@@ -22,19 +23,26 @@ public class PaywayActivity extends AppCompatActivity {
     private TextView tv_willPayMoneyNumber;
 
     private OnePayObject onePayObject;
-
+    private boolean isNavShow = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payway);
+        initData();
         onePayObject = PayObjectSingleInsance.getInstance().getOnePayObject();
         initViews();
         MyTools.hiddenBottom(this);
     }
 
+    private void initData() {
+        Intent i = getIntent();
+        isNavShow = i.getBooleanExtra(getString(R.string.payway_actvity_nav_show),true);
+    }
+
     private void initViews() {
         titleView = findViewById(R.id.mytitle);
+        titleView.setNavVisibility(isNavShow);
         titleView.setNavSrc(R.drawable.left);
         titleView.setNavClickListener(new View.OnClickListener() {
             @Override

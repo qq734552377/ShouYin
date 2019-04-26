@@ -126,7 +126,7 @@ public class PaywayResultActivity extends AppCompatActivity {
                 tv_payshouyinyuan.setText(onePayObject.getShouyinYuan().getName());
                 tv_paymoneyNumber.setText(getShowString(currentPaymoney));
 
-                PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(payType,currentPaymoney, ExceptionApplication.getInstance().getString(R.string.defult_xianjin_payer_id));
+                PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(payType,currentPaymoney, ExceptionApplication.getInstance().getString(R.string.defult_xianjin_payer_id),MyTools.getCreateTime());
                 onePayObject.addOnePayedMoneyWithType(payedMoneyWithType);
 
                 tv_shifuMsg.setText(getShowString(onePayObject.getAllPayedMoneyFloat()) + "\n" + onePayObject.getShowMoneyString());
@@ -141,15 +141,16 @@ public class PaywayResultActivity extends AppCompatActivity {
                 tv_paymoneyNumber.setText(getShowString(currentPaymoney));
 
 
-                PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(payType,currentPaymoney, ExceptionApplication.getInstance().getString(R.string.defult_xianjin_payer_id));
+                PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(payType,currentPaymoney, ExceptionApplication.getInstance().getString(R.string.defult_xianjin_payer_id),MyTools.getCreateTime());
                 onePayObject.addOnePayedMoneyWithType(payedMoneyWithType);
 
                 tv_shifuMsg.setText(getShowString(onePayObject.getAllPayedMoneyFloat()) + "\n" + onePayObject.getShowMoneyString());
 
             }else{//未结清
-                PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(payType,currentPaymoney, ExceptionApplication.getInstance().getString(R.string.defult_xianjin_payer_id));
+                PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(payType,currentPaymoney, ExceptionApplication.getInstance().getString(R.string.defult_xianjin_payer_id),MyTools.getCreateTime());
                 onePayObject.addOnePayedMoneyWithType(payedMoneyWithType);
                 Intent i = new Intent(PaywayResultActivity.this, PaywayActivity.class);
+                i.putExtra(getString(R.string.payway_actvity_nav_show),false);
                 i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(i);
             }

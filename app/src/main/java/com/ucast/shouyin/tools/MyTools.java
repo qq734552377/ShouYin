@@ -10,9 +10,14 @@ import android.util.Base64;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.ucast.shouyin.sql.manager.MyDbHelper;
+
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -94,6 +99,13 @@ public class MyTools {
         date = formatter.format(curDate);
         return date;
     }
+    public static String millisToPayIdDateString(long time) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyMMddHHmmss");
+        String date;
+        Date curDate = new Date(time);
+        date = formatter.format(curDate);
+        return date;
+    }
     public static String millisToDateStringOnlyYMD(long time) {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String date;
@@ -102,6 +114,37 @@ public class MyTools {
         return date;
     }
 
+    public static String getCreateTime(){
+        return millisToDateString(System.currentTimeMillis());
+    }
+
+    public static String getCreateTimeOnlyDay(){
+        return millisToDateStringOnlyYMD(System.currentTimeMillis());
+    }
+
+    /** Get the STB MacAddress*/
+    public static String getMacAddress(){
+        try {
+            return loadFileAsString("/sys/class/net/eth0/address") .toUpperCase().substring(0, 17).replace(':','-');
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static String loadFileAsString(String filePath) throws java.io.IOException{
+        if (! new File(filePath).exists())
+            return "";
+        StringBuffer fileData = new StringBuffer(1000);
+        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        char[] buf = new char[1024]; int numRead=0;
+        while((numRead=reader.read(buf)) != -1){
+            String readData = String.valueOf(buf, 0, numRead);
+            fileData.append(readData);
+        }
+        reader.close();
+        return fileData.toString();
+    }
 
     public static void writeToFile(String path , String data){
         try{
@@ -246,7 +289,7 @@ public class MyTools {
     }
 
     public static String getOnePayID(){
-        String id = millisToYinLianDateString(System.currentTimeMillis());
+        String id = Config.DEVICE_ID + millisToPayIdDateString(System.currentTimeMillis()) + MyDbHelper.getInstance().getPayIdNumber();
         return id;
     }
 

@@ -11,9 +11,11 @@ import com.ucast.shouyin.tools.MyTools;
 public class OnePayedOkObj {
     private int id;
     private String payMsg;
+    private String createTime;
     private String createTimeOnlyDay;
 
     public OnePayedOkObj() {
+        setCurTimeToCreateTime();
         setCurTimeToCreateTimeOnlyDay();
     }
 
@@ -33,6 +35,14 @@ public class OnePayedOkObj {
         this.payMsg = payMsg;
     }
 
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     public String getCreateTimeOnlyDay() {
         return createTimeOnlyDay;
     }
@@ -42,12 +52,16 @@ public class OnePayedOkObj {
     }
 
     public OnePayObject getOnePayObj(){
-        return (OnePayObject) JSON.parse(payMsg);
+        OnePayObject one = (OnePayObject) JSON.parseObject(this.payMsg,OnePayObject.class);
+        return one;
     }
     public void setOnePayObjJsonStr(OnePayObject onePayObject){
         this.payMsg = JSON.toJSONString(onePayObject);
     }
+    public void setCurTimeToCreateTime(){
+        setCreateTime(MyTools.getCreateTime());
+    }
     public void setCurTimeToCreateTimeOnlyDay(){
-        this.createTimeOnlyDay = MyTools.millisToDateStringOnlyYMD(System.currentTimeMillis());
+        setCreateTimeOnlyDay(MyTools.getCreateTimeOnlyDay());
     }
 }

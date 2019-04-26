@@ -21,12 +21,16 @@ import com.ucast.shouyin.entities.OnePayObject;
 import com.ucast.shouyin.entities.PayObjectSingleInsance;
 import com.ucast.shouyin.num_view.MyTitleView;
 import com.ucast.shouyin.num_view.NumberView;
+import com.ucast.shouyin.sql.entity.OnePayedOkObj;
+import com.ucast.shouyin.sql.manager.MyDbHelper;
 import com.ucast.shouyin.tools.Config;
 import com.ucast.shouyin.tools.MyDialog;
 import com.ucast.shouyin.tools.MyTools;
 import com.ucast.shouyin.tools.ToastUtil;
 import com.ucast.shouyin.yl.HttpReauestUrl;
 import com.ucast.shouyin.yl.YinlianToken;
+
+import java.util.ArrayList;
 
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -61,11 +65,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void initViews() {
         try {
-            YinlianToken.mainTest();
+//            YinlianToken.mainTest();
         }catch (Exception e){}
 
 //        String r = YinlianToken.testSHA256_STRING("e");
-        HttpReauestUrl.getToken(this,false);
+
+//        ArrayList<OnePayedOkObj> all =  MyDbHelper.getInstance().getAllAllPayObj();
+//        for (int i = 0; i < all.size(); i++) {
+//            OnePayObject one = all.get(i).getOnePayObj();
+//            System.out.print(one);
+//        }
+//        HttpReauestUrl.getToken(this,false);
         titleView = findViewById(R.id.mytitle);
         numberView = findViewById(R.id.mynumberview);
         numberView.setAffirmBtVisibility(false);
@@ -126,10 +136,12 @@ public class MainActivity extends AppCompatActivity {
                 onePayObject.setPayID(MyTools.getOnePayID());
                 onePayObject.setShouyinYuan(EmployeeSingleInstance.getInstance().getOneEmployee());
                 onePayObject.setPayedOK(false);
+                onePayObject.setCreateTime(MyTools.getCreateTime());
                 view.setEditerText(getShowString(totalMoney));
 
                 PayObjectSingleInsance.getInstance().setOnePayObject(onePayObject);
                 Intent i  = new Intent(MainActivity.this, PaywayActivity.class);
+                i.putExtra(getString(R.string.payway_actvity_nav_show),true);
                 startActivity(i);
             }
         });

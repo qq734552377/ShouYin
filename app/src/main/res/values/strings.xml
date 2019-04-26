@@ -22,6 +22,7 @@
     <string name="zhifu_ing">正在支付中，\n请稍后...</string>
     <string name="defult_time">2010-10-10 02:02:02</string>
     <string name="defult_xianjin_payer_id">个人</string>
+    <string name="payway_actvity_nav_show">paywayActvityNavShow</string>
 
     <string name="yl_appid">appId</string>
     <string name="yl_timestamp">timestamp</string>

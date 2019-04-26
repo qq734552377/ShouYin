@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.ucast.shouyin.exception.ExceptionApplication;
 import com.ucast.shouyin.sql.entity.OnePayedOkObj;
+import com.ucast.shouyin.tools.MyTools;
 
 import java.util.ArrayList;
 
@@ -37,7 +38,8 @@ public class MyDbHelper {
         ContentValues values=new ContentValues();
 //        values.put(MyDbOpenHelper.id,one.getId());
         values.put(MyDbOpenHelper.allpayobjPayMsg,one.getPayMsg());
-        values.put(MyDbOpenHelper.allpayobjCreateTime,one.getCreateTimeOnlyDay());
+        values.put(MyDbOpenHelper.createTime,one.getCreateTime());
+        values.put(MyDbOpenHelper.createTimeOnlyDay,one.getCreateTimeOnlyDay());
         return db.insert(MyDbOpenHelper.ALLPAYOBJTABLENAME,null,values);
     }
 
@@ -48,7 +50,8 @@ public class MyDbHelper {
             OnePayedOkObj one = new OnePayedOkObj();
             one.setId(c.getInt(c.getColumnIndex(MyDbOpenHelper.id)));
             one.setPayMsg(c.getString(c.getColumnIndex(MyDbOpenHelper.allpayobjPayMsg)));
-            one.setCreateTimeOnlyDay(c.getString(c.getColumnIndex(MyDbOpenHelper.allpayobjCreateTime)));
+            one.setCreateTime(c.getString(c.getColumnIndex(MyDbOpenHelper.createTime)));
+            one.setCreateTimeOnlyDay(c.getString(c.getColumnIndex(MyDbOpenHelper.createTimeOnlyDay)));
             alls.add(one);
         }
         return alls.size() > 0 ? alls : null;
@@ -56,14 +59,35 @@ public class MyDbHelper {
 
     public ArrayList<OnePayedOkObj> getAllAllPayObjByCreateTime(String timeOnlyDay){
         ArrayList<OnePayedOkObj> alls = new ArrayList<>();
-        Cursor c = db.query(MyDbOpenHelper.ALLPAYOBJTABLENAME,null,MyDbOpenHelper.allpayobjCreateTime + "=?",new String[]{timeOnlyDay},null,null,MyDbOpenHelper.orderById);
+        Cursor c = db.query(MyDbOpenHelper.ALLPAYOBJTABLENAME,null,MyDbOpenHelper.createTimeOnlyDay + "=?",new String[]{timeOnlyDay},null,null,MyDbOpenHelper.orderById);
         while (c.moveToNext()){
             OnePayedOkObj one = new OnePayedOkObj();
             one.setId(c.getInt(c.getColumnIndex(MyDbOpenHelper.id)));
             one.setPayMsg(c.getString(c.getColumnIndex(MyDbOpenHelper.allpayobjPayMsg)));
-            one.setCreateTimeOnlyDay(c.getString(c.getColumnIndex(MyDbOpenHelper.allpayobjCreateTime)));
+            one.setCreateTime(c.getString(c.getColumnIndex(MyDbOpenHelper.createTime)));
+            one.setCreateTimeOnlyDay(c.getString(c.getColumnIndex(MyDbOpenHelper.createTimeOnlyDay)));
             alls.add(one);
         }
         return alls.size() > 0 ? alls : null;
+    }
+
+    public String getPayIdNumber(){
+        int number = 1;
+        Cursor c = db.query(MyDbOpenHelper.PAYNUMBERTABLENAME,null,MyDbOpenHelper.createTimeOnlyDay + "=?",new String[]{MyTools.getCreateTimeOnlyDay()},null,null,null);
+        if (c.getCount() == 0){
+            ContentValues values=new ContentValues();
+            values.put(MyDbOpenHelper.payNumber,number);
+            values.put(MyDbOpenHelper.createTimeOnlyDay,MyTools.getCreateTimeOnlyDay());
+            db.insert(MyDbOpenHelper.PAYNUMBERTABLENAME,null,values);
+            return String.format("%04d",number);
+        }
+        while (c.moveToNext()){
+            number = c.getInt(c.getColumnIndex(MyDbOpenHelper.payNumber));
+        }
+        number++;
+        ContentValues values=new ContentValues();
+        values.put(MyDbOpenHelper.payNumber,number);
+        db.update(MyDbOpenHelper.PAYNUMBERTABLENAME,values,MyDbOpenHelper.createTimeOnlyDay + "=?",new String[]{MyTools.getCreateTimeOnlyDay()});
+        return String.format("%04d",number);
     }
 }

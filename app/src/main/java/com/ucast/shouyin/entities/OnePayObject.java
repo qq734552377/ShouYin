@@ -25,6 +25,7 @@ public class OnePayObject {
     private String payID;
     private Employee shouyinYuan;
     private boolean isPayedOK;
+    private String createTime;
     private ArrayList<PayedMoneyWithType> allPayedMoneys;
 
     public OnePayObject() {
@@ -103,6 +104,14 @@ public class OnePayObject {
         isPayedOK = payedOK;
     }
 
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
     public ArrayList<PayedMoneyWithType> getAllPayedMoneys() {
         return allPayedMoneys;
     }
@@ -154,7 +163,7 @@ public class OnePayObject {
         }
         if(oneItem.getPayType() == PayType.XIANJIN && (this.payedMoney + this.discount) > this.totalPayMoney){// 付钱过多  需添加找零
             isPayedOK = true;
-            PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(PayType.ZHAOLING,this.willPayMoney, ExceptionApplication.getInstance().getString(R.string.defult_xianjin_payer_id));
+            PayedMoneyWithType payedMoneyWithType = new PayedMoneyWithType(PayType.ZHAOLING,this.willPayMoney, ExceptionApplication.getInstance().getString(R.string.defult_xianjin_payer_id),MyTools.getCreateTime());
             this.allPayedMoneys.add(payedMoneyWithType);
             return true;
         }
